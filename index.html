@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Supplementary ball-and-plate simulations comparing MPCTP-CZ and MPCTP.">
+  <title>MPCTP-CZ Supplementary Simulations</title>
+  <style>
+    :root {
+      --ink: #e8edf5;
+      --muted: #97a6bb;
+      --panel: #121b29;
+      --line: #2c3b50;
+      --cyan: #55d9e8;
+      --orange: #f59b65;
+    }
+    * { box-sizing: border-box; }
+    html { background: #08111d; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        linear-gradient(rgba(85,217,232,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(85,217,232,.035) 1px, transparent 1px),
+        radial-gradient(circle at 75% 0%, #173047 0%, #08111d 46%);
+      background-size: 34px 34px, 34px 34px, auto;
+    }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding-bottom: 34px; }
+    header { height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(151,166,187,.24); }
+    .wordmark, .context, .eyebrow, dt, .panel-bar, footer { font-family: Consolas, monospace; text-transform: uppercase; letter-spacing: .11em; }
+    .wordmark { display: flex; align-items: center; gap: 11px; font-size: .88rem; font-weight: 600; }
+    .signal { width: 9px; height: 9px; border: 2px solid var(--cyan); transform: rotate(45deg); }
+    .context { color: var(--muted); font-size: .7rem; }
+    .parameters-wrap { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 30px 0 48px; }
+    .eyebrow { margin: 0; color: var(--cyan); font-size: .72rem; }
+    dl { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; }
+    dl div { display: grid; grid-template-columns: auto auto; gap: 12px; align-items: baseline; padding: 9px 13px; border: 1px solid var(--line); background: rgba(18,27,41,.7); }
+    dt { color: var(--muted); font-size: .64rem; }
+    dd { margin: 0; font-family: Consolas, monospace; font-size: .86rem; }
+    section { margin-bottom: clamp(62px, 9vw, 110px); }
+    .heading { display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 24px; align-items: start; margin-bottom: 24px; }
+    .index { padding-top: 10px; color: var(--cyan); font-family: Consolas, monospace; font-size: .72rem; letter-spacing: .12em; }
+    h1, h2 { margin: 0; font-size: clamp(2rem, 5vw, 4.6rem); font-weight: 600; line-height: 1; letter-spacing: -.04em; }
+    .heading p { max-width: 760px; margin: 14px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55; }
+    .panel { overflow: hidden; border: 1px solid var(--line); background: var(--panel); box-shadow: 0 32px 80px rgba(0,0,0,.32); }
+    .panel-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 48px; padding: 0 18px; color: var(--muted); font-size: .66rem; border-bottom: 1px solid var(--line); }
+    .status { display: flex; align-items: center; gap: 8px; }
+    .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 14px rgba(245,155,101,.75); }
+    video { display: block; width: 100%; aspect-ratio: 49 / 34; background: white; object-fit: contain; }
+    .panel-footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 17px 18px; border-top: 1px solid var(--line); }
+    .panel-footer span { color: var(--muted); font-size: .9rem; }
+    a { color: var(--cyan); font-family: Consolas, monospace; font-size: .78rem; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    footer { padding-top: 28px; color: #6f8097; font-size: .64rem; text-align: center; }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 24px, 1120px); }
+      header { height: 62px; }
+      .context { display: none; }
+      .parameters-wrap { align-items: flex-start; flex-direction: column; padding: 26px 0 38px; }
+      .heading { grid-template-columns: 1fr; gap: 8px; }
+      .index { padding-top: 0; }
+      .panel-bar, .panel-footer { align-items: flex-start; flex-direction: column; padding: 14px; }
+      .status { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="wordmark"><span class="signal" aria-hidden="true"></span>MPCTP-CZ</div>
+      <span class="context">Supplementary simulations</span>
+    </header>
+
+    <aside class="parameters-wrap">
+      <p class="eyebrow">Ball-and-plate periodic tracking</p>
+      <dl aria-label="Simulation parameters">
+        <div><dt>Period</dt><dd>T = 36</dd></div>
+        <div><dt>Horizon</dt><dd>N = 3</dd></div>
+        <div><dt>Sampling</dt><dd>T<sub>s</sub> = 0.1 s</dd></div>
+      </dl>
+    </aside>
+
+    <section aria-labelledby="tracking-title">
+      <div class="heading">
+        <span class="index">01</span>
+        <div>
+          <h1 id="tracking-title">2D tracking</h1>
+          <p>Comparison of ball trajectories for periodic references using MPCTP-CZ and MPCTP</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Ball trajectories</span><span class="status"><i aria-hidden="true"></i>simulation output</span></div>
+        <video controls autoplay loop muted playsinline preload="metadata">
+          <source src="tracking-2d.mp4" type="video/mp4">
+          Your browser does not support embedded MP4 video.
+        </video>
+        <div class="panel-footer"><span>MPCTP-CZ and MPCTP</span><a href="tracking-2d.mp4" download>Download MP4 ↓</a></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="components-title">
+      <div class="heading">
+        <span class="index">02</span>
+        <div>
+          <h2 id="components-title">Component Trajectories and Artificial-Reference Evolution</h2>
+          <p>Evolution of <i>z</i><sub>1</sub>, <i>z</i><sub>2</sub>, and the periodic artificial reference</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Component trajectories</span><span class="status"><i aria-hidden="true"></i>simulation output</span></div>
+        <video controls loop muted playsinline preload="metadata">
+          <source src="animation.mp4" type="video/mp4">
+          Your browser does not support embedded MP4 video.
+        </video>
+        <div class="panel-footer"><span>Optimized artificial-reference update</span><a href="animation.mp4" download>Download MP4 ↓</a></div>
+      </div>
+    </section>
+
+    <footer>Exact compact CZ terminal set · MATLAB / YALMIP / Gurobi</footer>
+  </main>
+</body>
+</html>
