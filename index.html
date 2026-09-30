@@ -45,6 +45,9 @@
     h1, h2 { margin: 0; font-size: clamp(2rem, 5vw, 4.6rem); font-weight: 600; line-height: 1; letter-spacing: -.04em; }
     .heading p { max-width: 760px; margin: 14px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55; }
     .panel { overflow: hidden; border: 1px solid var(--line); background: var(--panel); box-shadow: 0 32px 80px rgba(0,0,0,.32); }
+    .comparison-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+    .figure-panel { overflow: hidden; border: 1px solid var(--line); background: var(--panel); box-shadow: 0 32px 80px rgba(0,0,0,.32); }
+    .figure-panel img { display: block; width: 100%; height: auto; aspect-ratio: 49 / 34; background: white; object-fit: contain; }
     .panel-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 48px; padding: 0 18px; color: var(--muted); font-size: .66rem; border-bottom: 1px solid var(--line); }
     .status { display: flex; align-items: center; gap: 8px; }
     .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 14px rgba(245,155,101,.75); }
@@ -60,6 +63,7 @@
       .context { display: none; }
       .parameters-wrap { align-items: flex-start; flex-direction: column; padding: 26px 0 38px; }
       .heading { grid-template-columns: 1fr; gap: 8px; }
+      .comparison-grid { grid-template-columns: 1fr; }
       .index { padding-top: 0; }
       .panel-bar, .panel-footer { align-items: flex-start; flex-direction: column; padding: 14px; }
       .status { display: none; }
@@ -79,6 +83,8 @@
         <div><dt>Period</dt><dd>T = 36</dd></div>
         <div><dt>Horizon</dt><dd>N = 3</dd></div>
         <div><dt>Sampling</dt><dd>T<sub>s</sub> = 0.1 s</dd></div>
+        <div><dt>Tightening</dt><dd>λ = 0.99</dd></div>
+        <div><dt>Input bound</dt><dd>|u<sub>i</sub>| ≤ 0.13 rad/s²</dd></div>
       </dl>
     </aside>
 
@@ -105,16 +111,38 @@
         <span class="index">02</span>
         <div>
           <h2 id="components-title">Component Trajectories and Artificial-Reference Evolution</h2>
-          <p>Evolution of <i>z</i><sub>1</sub>, <i>z</i><sub>2</sub>, and the periodic artificial reference</p>
+          <p>Evolution of <i>z</i><sub>1</sub> and <i>z</i><sub>2</sub>, together with the optimized periodic artificial reference</p>
         </div>
       </div>
       <div class="panel">
-        <div class="panel-bar"><span>Component trajectories</span><span class="status"><i aria-hidden="true"></i>simulation output</span></div>
+        <div class="panel-bar"><span>Output components</span><span class="status"><i aria-hidden="true"></i>simulation output</span></div>
         <video controls loop muted playsinline preload="metadata">
           <source src="animation.mp4" type="video/mp4">
           Your browser does not support embedded MP4 video.
         </video>
         <div class="panel-footer"><span>Optimized artificial-reference update</span><a href="animation.mp4" download>Download MP4 ↓</a></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="inputs-title">
+      <div class="heading">
+        <span class="index">03</span>
+        <div>
+          <h2 id="inputs-title">Control-Input Comparison</h2>
+          <p>Static comparisons of <i>u</i><sub>1</sub> and <i>u</i><sub>2</sub> for MPCTP-CZ and MPCTP, including the optimal reachable input, hard input constraints, and reference switch</p>
+        </div>
+      </div>
+      <div class="comparison-grid">
+        <div class="figure-panel">
+          <div class="panel-bar"><span>Input channel u₁</span><span>static comparison</span></div>
+          <img src="input-u1.png" alt="Static comparison of the first control-input channel">
+          <div class="panel-footer"><span>First control-input channel</span><a href="input-u1.png" download>Download PNG ↓</a></div>
+        </div>
+        <div class="figure-panel">
+          <div class="panel-bar"><span>Input channel u₂</span><span>static comparison</span></div>
+          <img src="input-u2.png" alt="Static comparison of the second control-input channel">
+          <div class="panel-footer"><span>Second control-input channel</span><a href="input-u2.png" download>Download PNG ↓</a></div>
+        </div>
       </div>
     </section>
 

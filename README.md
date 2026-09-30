@@ -5,4 +5,6 @@ This repository hosts supplementary ball-and-plate simulations comparing MPCTP-C
 The published page contains:
 
 - two-dimensional periodic-reference tracking;
-- evolution of the two position components and the periodic artificial reference.
+- evolution of the two position components and the periodic artificial reference;
+- static comparisons of the two control-input channels, including optimal
+  reachable inputs, hard constraints, and the reference switch.
